@@ -1,9 +1,14 @@
-FROM openjdk:17-jdk
+FROM ubuntu:latest AS build
 
-WORKDIR /app
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
 
-COPY target/security-0.0.1-SNAPSHOT.jar app.jar
+COPY . .
 
+RUN apt-get install maven -y
+RUN mvn mvn clean install -DskipTests
+
+FROM openjdk:17-jdk-slim
 EXPOSE 8080
 
 ENV DATABASE_URL=${DATABASE_URL}
@@ -17,4 +22,9 @@ ENV SMTP_MAIL_USERNAME=${SMTP_MAIL_USERNAME}
 ENV SMTP_MAIL_PASSWORD=${SMTP_MAIL_PASSWORD}
 ENV BASE_URL=${BASE_URL}
 
+COPY --from=build /target/*.jar app.jar
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+
