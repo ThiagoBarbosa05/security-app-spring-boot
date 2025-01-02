@@ -11,9 +11,11 @@
 ![Postgresql][POSTGRES]
 
 <p align="center">
+<a href="#features">Features</a> •
  <a href="#started">Getting Started</a> • 
-  <a href="#routes">API Endpoints</a> •
- <a href="#colab">Collaborators</a> •
+ <a href="#docs">Documentation</a> •
+ <a href="#license">License</a> •
+ <a href="#collaborators">Collaborators</a> •
  <a href="#contribute">Contribute</a>
 </p>
 
@@ -21,7 +23,7 @@
   <b>Authentication API built with spring boot, where the user can authenticate with email/password or Oauth2 google which returns a jwt access token for authorization on private routes.</b>
 </p>
 
-## ⚙️ Features
+<h2 id="features">⚙️ Features</h2>
 
 - password confirmation
 - upload profile image
@@ -31,7 +33,11 @@
 
 <h2 id="started">🚀 Getting started</h2>
 
-Running locally
+Clone the project
+
+```bash
+  git clone https://github.com/ThiagoBarbosa05/security-app-spring-boot.git
+```
 
 Clone the project
 
@@ -39,16 +45,27 @@ Clone the project
   git clone https://github.com/ThiagoBarbosa05/security-app-spring-boot.git
 ```
 
-Run postgresql database
-
-```bash
-  docker compose up -d
-```
-
 Enter the project directory
 
 ```bash
   cd security-app-spring-boot
+```
+
+You will need to fill in the environment variables to run the application, see an example of `application.properties` below
+
+```yaml
+spring.datasource.url=${DATABASE_URL}
+spring.security.oauth2.client.registration.google.client-id=${GOOGLE_CLIENT_ID}
+spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_SECRET}
+aws.access.key.id=${AWS_ACCESS_KEY}
+aws.access.secret.key=${AWS_ACCESS_SECRET_KEY}
+aws.s3.bucket.name=${AWS_S3_BUCKET_NAME}
+aws.region=${AWS_REGION}
+spring.mail.username=${SMTP_MAIL_USERNAME}
+spring.mail.password=${SMTP_MAIL_PASSWORD}
+spring.mail.properties.mail.smtp.from=${SMTP_MAIL_USERNAME}
+base.url=${BASE_URL}
+security.token.secret=${TOKEN_SECRET}
 ```
 
 Start the server
@@ -67,28 +84,7 @@ Here you list all prerequisites necessary for running your project. For example:
 - [Maven](https://maven.apache.org/download.cgi)
 - [PostgreSQL](https://www.postgresql.org/download/)
 
-<h3> Environment Variables</h2>
-
-Use the `application.properties.example` as reference to create your configuration file `application.properties` with your AWS Credentials
-
-```yaml
-spring.datasource.url=${DATABASE_URL}
-aws.accessKeyId={YOUR_AWS_KEY_ID}
-aws.secretKey={YOUR_AWS_SECRET}
-spring.security.oauth2.client.registration.google.client-id=${GOOGLE_CLIENT_ID}
-spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_SECRET}
-aws.access.key.id=${AWS_ACCESS_KEY}
-aws.access.secret.key=${AWS_ACCESS_SECRET_KEY}
-aws.s3.bucket.name=${AWS_S3_BUCKET_NAME}
-aws.region=${AWS_REGION}
-spring.mail.username=${SMTP_MAIL_USERNAME}
-spring.mail.password=${SMTP_MAIL_PASSWORD}
-spring.mail.properties.mail.smtp.from=${SMTP_MAIL_USERNAME}
-base.url=${BASE_URL}
-security.token.secret=${TOKEN_SECRET}
-```
-
-## Documentation
+<h2 id="docs"> 📖 Documentation </h2>
 
 After running the api locally, access this url to see the documentation
 
@@ -97,6 +93,12 @@ http://localhost:8080/swagger-ui/index.html#/
 ```
 
 [Documentation](http://localhost:8080/swagger-ui/index.html#/)
+
+<h2 id="license">📃 License </h2>
+
+This project is under <a href="https://github.com/ThiagoBarbosa05/security-app-spring-boot/blob/main/LICENSE">MIT</a> license
+
+<h2 id="collaborators"> 🤝 Collaborators</h2>
 
 <table>
   <tr>
