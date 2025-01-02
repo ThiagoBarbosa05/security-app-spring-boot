@@ -21,6 +21,8 @@
 
 <p align="center">
   <b>Authentication API built with spring boot, where the user can authenticate with email/password or Oauth2 google which returns a jwt access token for authorization on private routes.</b>
+  <br />
+  <b><a href="https://github.com/ThiagoBarbosa05/security-ui">click here to access the application front-end code.</a></b>
 </p>
 
 <h2 id="features">⚙️ Features</h2>
